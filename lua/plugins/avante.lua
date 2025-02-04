@@ -12,7 +12,7 @@ return {
       provider = "openai",
       openai = {
         endpoint = "http://ai-pc.skyori.ru:11435/v1",
-        model = "deepseek-r1-58k:32b",
+        model = "deepseek-r1-54k:32b",
         timeout = 300000,
         apiKey = "ollama",
         max_tokens = 8192,
