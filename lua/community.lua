@@ -7,13 +7,23 @@
 ---@type LazySpec
 return {
   "AstroNvim/astrocommunity",
+  -- Themes:
   { import = "astrocommunity.colorscheme.vscode-nvim" },
+  { import = "astrocommunity.colorscheme.kanagawa-nvim" },
+  { import = "astrocommunity.colorscheme.cyberdream-nvim" },
+  { import = "astrocommunity.colorscheme.onedarkpro-nvim" },
+  { import = "astrocommunity.colorscheme.oxocarbon-nvim" },
+  { import = "astrocommunity.colorscheme.sonokai" },
+  { import = "astrocommunity.colorscheme.tokyonight-nvim" },
+
+  -- Editor + utils:
   { import = "astrocommunity.completion.avante-nvim" },
   { import = "astrocommunity.editing-support.undotree" },
   { import = "astrocommunity.editing-support.vim-move" },
   { import = "astrocommunity.docker.lazydocker" },
+
+  -- LSP:
   { import = "astrocommunity.pack.docker" },
-  --{ import = "astrocommunity.pack.xml" },
   { import = "astrocommunity.pack.cs" },
   { import = "astrocommunity.pack.typescript" },
   { import = "astrocommunity.pack.svelte" },
