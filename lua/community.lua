@@ -15,6 +15,13 @@ return {
   { import = "astrocommunity.colorscheme.oxocarbon-nvim" },
   { import = "astrocommunity.colorscheme.sonokai" },
   { import = "astrocommunity.colorscheme.tokyonight-nvim" },
+  { import = "astrocommunity.colorscheme.mellifluous-nvim" },
+  { import = "astrocommunity.colorscheme.melange-nvim" },
+  { import = "astrocommunity.colorscheme.gruvbox-nvim" },
+  { import = "astrocommunity.colorscheme.gruvbox-baby" },
+  { import = "astrocommunity.colorscheme.hybrid-nvim" },
+  { import = "astrocommunity.colorscheme.everblush-nvim" },
+  { import = "astrocommunity.colorscheme.catppuccin" },
 
   -- Editor + utils:
   { import = "astrocommunity.completion.avante-nvim" },
