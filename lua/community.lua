@@ -22,6 +22,8 @@ return {
   { import = "astrocommunity.colorscheme.hybrid-nvim" },
   { import = "astrocommunity.colorscheme.everblush-nvim" },
   { import = "astrocommunity.colorscheme.catppuccin" },
+  { import = "astrocommunity.colorscheme.neofusion-nvim" },
+  { import = "astrocommunity.color.transparent-nvim" },
 
   -- Editor + utils:
   { import = "astrocommunity.completion.avante-nvim" },
@@ -31,7 +33,14 @@ return {
 
   -- LSP:
   { import = "astrocommunity.pack.docker" },
-  { import = "astrocommunity.pack.cs" },
   { import = "astrocommunity.pack.typescript" },
   { import = "astrocommunity.pack.svelte" },
+
+  -- C#:
+  --
+  { import = "astrocommunity.pack.cs" },
+  { import = "astrocommunity.test.neotest" },
+
+  -- Other:
+  { import = "astrocommunity.pack.xml" },
 }
