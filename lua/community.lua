@@ -35,6 +35,7 @@ return {
   { import = "astrocommunity.pack.docker" },
   { import = "astrocommunity.pack.typescript" },
   { import = "astrocommunity.pack.svelte" },
+  { import = "astrocommunity.pack.markdown" },
 
   -- C#:
   --
