@@ -30,6 +30,7 @@ return {
   { import = "astrocommunity.editing-support.undotree" },
   { import = "astrocommunity.editing-support.vim-move" },
   { import = "astrocommunity.docker.lazydocker" },
+  { import = "astrocommunity.note-taking.neorg" },
 
   -- LSP:
   { import = "astrocommunity.pack.docker" },
@@ -41,6 +42,7 @@ return {
   --
   { import = "astrocommunity.pack.cs" },
   { import = "astrocommunity.test.neotest" },
+  { import = "astrocommunity.code-runner.overseer-nvim" },
 
   -- Other:
   { import = "astrocommunity.pack.xml" },
