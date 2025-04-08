@@ -30,3 +30,9 @@ require("lazy").setup({
     },
   },
 } --[[@as LazyConfig]])
+
+--require('xkbswitch').setup()
+
+require("notify").setup({
+  background_colour = "#c7c99d",
+})
