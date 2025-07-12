@@ -1,28 +1,27 @@
-if true then return {} end -- WARN: REMOVE THIS LINE TO ACTIVATE THIS FILE
-
 -- Customize Mason
 
 ---@type LazySpec
 return {
-  -- use mason-tool-installer for automatically installing Mason packages
+  -- 1) Stop mason-lspconfig from ensuring "omnisharp"
+  {
+    "williamboman/mason-lspconfig.nvim",
+    opts = function(_, opts)
+      if opts.ensure_installed then
+        opts.ensure_installed = vim.tbl_filter(function(server)
+          return server ~= "omnisharp"
+        end, opts.ensure_installed)
+      end
+    end,
+  },
+  -- 2) Stop mason-tool-installer from ensuring "omnisharp"
   {
     "WhoIsSethDaniel/mason-tool-installer.nvim",
-    -- overrides `require("mason-tool-installer").setup(...)`
-    opts = {
-      -- Make sure to use the names found in `:Mason`
-      ensure_installed = {
-        -- install language servers
-        "lua-language-server",
-
-        -- install formatters
-        "stylua",
-
-        -- install debuggers
-        "debugpy",
-
-        -- install any other package
-        "tree-sitter-cli",
-      },
-    },
+    opts = function(_, opts)
+      if opts.ensure_installed then
+        opts.ensure_installed = vim.tbl_filter(function(tool)
+          return tool ~= "omnisharp"
+        end, opts.ensure_installed)
+      end
+    end,
   },
 }
