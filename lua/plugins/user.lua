@@ -1,88 +1,75 @@
-if true then return {} end -- WARN: REMOVE THIS LINE TO ACTIVATE THIS FILE
-
 -- You can also add or configure plugins by creating files in this `plugins/` folder
--- PLEASE REMOVE THE EXAMPLES YOU HAVE NO INTEREST IN BEFORE ENABLING THIS FILE
--- Here are some examples:
-
 ---@type LazySpec
 return {
-
-  -- == Examples of Adding Plugins ==
-
-  "andweeb/presence.nvim",
   {
-    "ray-x/lsp_signature.nvim",
-    event = "BufRead",
-    config = function() require("lsp_signature").setup() end,
+    "benlubas/neorg-interim-ls",
+    ft = "norg", -- lazy load on norg files
+    -- optional: no config here, Neorg will configure it
   },
 
-  -- == Examples of Overriding Plugins ==
+  -- override neorg opts coming from the astrocommunity module
+  {
+    "nvim-neorg/neorg",
+    opts = function(_, opts)
+      local astrocore = require("astrocore")
+      opts = opts or {}
 
-  -- customize dashboard options
+      return astrocore.extend_tbl(opts, {
+        -- ensure the interim-ls external module is loaded and configure it
+        load = {
+          ["external.interim-ls"] = {
+            config = {
+              completion_provider = {
+                enable = true,
+                documentation = true,
+                categories = false,
+                people = {
+                  enable = false,
+                  path = "people",
+                },
+              },
+            },
+          },
+
+          -- tell Neorg to use the external lsp-completion module
+          ["core.completion"] = {
+            config = {
+              engine = { module_name = "external.lsp-completion" },
+            },
+          },
+
+          -- keep any other modules you already use (example)
+          ["core.defaults"] = {},
+          ["core.concealer"] = {},
+          ["core.keybinds"] = {},
+          ["core.journal"] = {
+            config = {
+              workspace = "notes",
+              strategy = "flat",
+            },
+          },
+          ["core.dirman"] = {
+            config = {
+              workspaces = {
+                notes = "~/projects/notes",
+              },
+              default_workspace = "notes",
+            },
+          },
+        },
+      })
+    end,
+  },
   {
     "folke/snacks.nvim",
     opts = {
       dashboard = {
         preset = {
           header = table.concat({
-            " █████  ███████ ████████ ██████   ██████ ",
-            "██   ██ ██         ██    ██   ██ ██    ██",
-            "███████ ███████    ██    ██████  ██    ██",
-            "██   ██      ██    ██    ██   ██ ██    ██",
-            "██   ██ ███████    ██    ██   ██  ██████ ",
-            "",
-            "███    ██ ██    ██ ██ ███    ███",
-            "████   ██ ██    ██ ██ ████  ████",
-            "██ ██  ██ ██    ██ ██ ██ ████ ██",
-            "██  ██ ██  ██  ██  ██ ██  ██  ██",
-            "██   ████   ████   ██ ██      ██",
+            "⎯⎯⎯ NixOS — Declarative · Reproducible · Secure ⎯⎯⎯",
           }, "\n"),
         },
       },
     },
-  },
-
-  -- You can disable default plugins as follows:
-  { "max397574/better-escape.nvim", enabled = false },
-
-  -- You can also easily customize additional setup of plugins that is outside of the plugin's setup call
-  {
-    "L3MON4D3/LuaSnip",
-    config = function(plugin, opts)
-      require "astronvim.plugins.configs.luasnip"(plugin, opts) -- include the default astronvim config that calls the setup call
-      -- add more custom luasnip configuration such as filetype extend or custom snippets
-      local luasnip = require "luasnip"
-      luasnip.filetype_extend("javascript", { "javascriptreact" })
-    end,
-  },
-
-  {
-    "windwp/nvim-autopairs",
-    config = function(plugin, opts)
-      require "astronvim.plugins.configs.nvim-autopairs"(plugin, opts) -- include the default astronvim config that calls the setup call
-      -- add more custom autopairs configuration such as custom rules
-      local npairs = require "nvim-autopairs"
-      local Rule = require "nvim-autopairs.rule"
-      local cond = require "nvim-autopairs.conds"
-      npairs.add_rules(
-        {
-          Rule("$", "$", { "tex", "latex" })
-            -- don't add a pair if the next character is %
-            :with_pair(cond.not_after_regex "%%")
-            -- don't add a pair if  the previous character is xxx
-            :with_pair(
-              cond.not_before_regex("xxx", 3)
-            )
-            -- don't move right when repeat character
-            :with_move(cond.none())
-            -- don't delete if the next character is xx
-            :with_del(cond.not_after_regex "xx")
-            -- disable adding a newline when you press <cr>
-            :with_cr(cond.none()),
-        },
-        -- disable for .vim files, but it work for another filetypes
-        Rule("a", "a", "-vim")
-      )
-    end,
   },
 }
