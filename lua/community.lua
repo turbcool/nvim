@@ -15,7 +15,7 @@ return {
   { import = "astrocommunity.editing-support.undotree" },
   { import = "astrocommunity.editing-support.vim-move" },
   { import = "astrocommunity.docker.lazydocker" },
-  --{ import = "astrocommunity.note-taking.neorg" },
+  { import = "astrocommunity.note-taking.neorg" },
   { import = "astrocommunity.note-taking.global-note-nvim" },
 
   { import = "astrocommunity.pack.typescript" },
