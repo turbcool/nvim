@@ -20,7 +20,7 @@ return {
 
   { import = "astrocommunity.pack.typescript" },
   { import = "astrocommunity.pack.svelte" },
-  { import = "astrocommunity.pack.cs-omnisharp" },
+  --{ import = "astrocommunity.pack.cs-omnisharp" },
   { import = "astrocommunity.pack.markdown" },
   { import = "astrocommunity.code-runner.overseer-nvim" },
 }
