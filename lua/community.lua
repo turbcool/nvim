@@ -21,6 +21,7 @@ return {
   { import = "astrocommunity.pack.svelte" },
   { import = "astrocommunity.pack.markdown" },
   { import = "astrocommunity.code-runner.overseer-nvim" },
+  { import = "astrocommunity.search.grug-far-nvim" },
 
   --{ import = "astrocommunity.note-taking.neorg" },
   --{ import = "astrocommunity.pack.cs-omnisharp" },
